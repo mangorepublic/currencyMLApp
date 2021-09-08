@@ -1,0 +1,4 @@
+1 cedi
+10 cedis
+20 cedis
+50 cedis
