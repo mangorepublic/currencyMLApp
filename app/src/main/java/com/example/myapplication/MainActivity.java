@@ -144,11 +144,12 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             Imageview.setImageBitmap(imageBitmap);
-            bitmap = Bitmap.createScaledBitmap(imageBitmap,180,180,true);
+            bitmap = Bitmap.createScaledBitmap(imageBitmap, 180, 180, true);
 
 
             int imageTensorIndex = 0;
@@ -168,26 +169,26 @@ public class MainActivity extends AppCompatActivity {
 
             tbuffer = loadImage(bitmap);
 
-            tflite.run(tbuffer.getBuffer(),outputProbabilityBuffer.getBuffer().rewind());
-            
+            tflite.run(tbuffer.getBuffer(), outputProbabilityBuffer.getBuffer().rewind());
+
             showResults();
 
-    }
+        }
 
 
-   // @Override
-    //protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-      //  super.onActivityResult(requestCode, resultCode, data);
+        // @Override
+        //protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //  super.onActivityResult(requestCode, resultCode, data);
         //if(resultCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK && data != null){
-            //Bundle bundle = data.getExtras();
-          //  Bitmap finalPhoto = (Bitmap) data.getExtras().get("data");
-            //Imageview.setImageBitmap(finalPhoto);
+        //Bundle bundle = data.getExtras();
+        //  Bitmap finalPhoto = (Bitmap) data.getExtras().get("data");
+        //Imageview.setImageBitmap(finalPhoto);
 
         //    }
 
-      //  }
-    //}
-        }
+        //  }
+        //}
+    }
 
 
 
